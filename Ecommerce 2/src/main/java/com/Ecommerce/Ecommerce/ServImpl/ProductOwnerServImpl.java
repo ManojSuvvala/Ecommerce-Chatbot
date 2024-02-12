@@ -14,6 +14,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.sql.SQLException;
 import java.util.List;
+
 @Service
 @Transactional
 public class ProductOwnerServImpl implements ProductOwnerService {
@@ -61,6 +62,14 @@ public class ProductOwnerServImpl implements ProductOwnerService {
         }
         List<ProductDetailsBean> productDetailsBeans= productDetailsRepo.saveAll(productDetailsBeanList);
         return productDetailsBeans;
+    }
+
+    @Override
+    public String deleteProduct(List<Integer> deletedetails) {
+//        List<Integer> productid = deletedetails.stream().map(p ->p.getPDetailsId()).collect(Collectors.toList());
+        productDetailsRepo.deleteproductDetails(deletedetails);
+        return "Product deleted Successfully";
+
     }
 
 

@@ -10,6 +10,7 @@ public interface ProductOwnerService {
     String signUpOwner(ProductOwnerBean owner) throws SQLException, ClassNotFoundException;
     List<ProductDetailsBean> prodAdd(List<ProductDetailsBean> proddetailslist) throws BadRequestException;
     List<ProductDetailsBean> updateProducts(List<ProductDetailsBean> productDetailsBeanList) throws BadRequestException;
+    String deleteProduct(List<Integer> deletedetails);
 
 
 }

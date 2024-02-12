@@ -38,6 +38,9 @@ public class ProductOwnerController {
     }
 
 
-
+@DeleteMapping("/deleteproduct")
+    public ResponseEntity<String> delProduct(@RequestBody List<Integer> pdid){
+        return  ResponseEntity.ok().body(productOwnerService.deleteProduct(pdid));
+}
 
 }
