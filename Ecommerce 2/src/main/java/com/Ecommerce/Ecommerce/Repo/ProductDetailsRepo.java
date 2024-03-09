@@ -13,6 +13,12 @@ public interface ProductDetailsRepo extends JpaRepository<ProductDetailsBean,Int
     @Modifying
     @Query(value = "delete from PRODUCTDETAILS where PRODUCTDETAILS_ID in (:pids)",nativeQuery = true)
     void deleteproductDetails(List<Integer> pids);
+    @Modifying
+    @Query(value = "UPDATE PRODUCTDETAILS SET PRODUCT_QUANTITY=:QUANTITY WHERE PRODUCTDETAILS_ID =:pid",nativeQuery = true)
+    void updateProductQuantity(int QUANTITY, int pid);
+    @Query(value = "select * from PRODUCTDETAILS where PRODUCTDETAILS_ID=(select CART_PRODUCTDETAILS_ID from CART where CART_ID=:cid)",nativeQuery = true)
+    ProductDetailsBean findProductByCartId(int cid);
+
 
 }
 

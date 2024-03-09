@@ -1,9 +1,13 @@
 package com.Ecommerce.Ecommerce.ServImpl;
 
+import com.Ecommerce.Ecommerce.Bean.ProductCategoryBean;
 import com.Ecommerce.Ecommerce.Bean.ProductDetailsBean;
 import com.Ecommerce.Ecommerce.Bean.ProductOwnerBean;
+import com.Ecommerce.Ecommerce.Bean.ProductSubCategory;
+import com.Ecommerce.Ecommerce.Repo.HomePageRepo;
 import com.Ecommerce.Ecommerce.Repo.ProductDetailsRepo;
 import com.Ecommerce.Ecommerce.Repo.ProductOwnerSignupRepo;
+import com.Ecommerce.Ecommerce.Repo.ProductSubCategoryRepo;
 import com.Ecommerce.Ecommerce.Service.ProductOwnerService;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -25,6 +29,10 @@ public class ProductOwnerServImpl implements ProductOwnerService {
     private ProductDetailsRepo productDetailsRepo;
     @Autowired
     private EntityManager entityManager;
+    @Autowired
+    private HomePageRepo homePageRepo;
+    @Autowired
+    private ProductSubCategoryRepo productSubCategoryRepo;
 
 
     @Override
@@ -72,7 +80,17 @@ public class ProductOwnerServImpl implements ProductOwnerService {
 
     }
 
+    @Override
+    public List<ProductCategoryBean> prodCategoryDisplay() {
+        List<ProductCategoryBean> productCategoryBeans=homePageRepo.fetchp();
+        return productCategoryBeans;
+    }
 
+    @Override
+    public List<ProductSubCategory> prodSubCategoryDisplay() {
+        List<ProductSubCategory> productSubCategories= productSubCategoryRepo.fetch();
+        return productSubCategories;
+    }
 }
 
 

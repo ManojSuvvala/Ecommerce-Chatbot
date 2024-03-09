@@ -1,7 +1,9 @@
 package com.Ecommerce.Ecommerce.Controller;
 
+import com.Ecommerce.Ecommerce.Bean.ProductCategoryBean;
 import com.Ecommerce.Ecommerce.Bean.ProductDetailsBean;
 import com.Ecommerce.Ecommerce.Bean.ProductOwnerBean;
+import com.Ecommerce.Ecommerce.Bean.ProductSubCategory;
 import com.Ecommerce.Ecommerce.Service.ProductOwnerService;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +44,15 @@ public class ProductOwnerController {
     public ResponseEntity<String> delProduct(@RequestBody List<Integer> pdid){
         return  ResponseEntity.ok().body(productOwnerService.deleteProduct(pdid));
 }
+
+    @GetMapping("/productcategory")
+    public ResponseEntity<List<ProductCategoryBean>> ownerProdCategoryDisplay() throws SQLException, ClassNotFoundException {
+        return ResponseEntity.ok().body(productOwnerService.prodCategoryDisplay());
+    }
+
+    @GetMapping("/productsubcategory")
+    public  ResponseEntity<List<ProductSubCategory>>ownerProdSubCategoryDisplay(){
+        return ResponseEntity.ok().body(productOwnerService.prodSubCategoryDisplay());
+    }
 
 }

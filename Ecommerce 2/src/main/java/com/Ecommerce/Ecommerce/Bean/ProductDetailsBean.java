@@ -35,4 +35,6 @@ int productCategoryId;
 int productSubCategoryId;
     @Column(name = "PO_ID")
     int poID;
+    @Column(name = "PRODUCT_QUANTITY")
+    int quantity;
 }
