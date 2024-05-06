@@ -10,9 +10,8 @@ List<CartBean> saveCart(CartBean cartBean);
 public  void deleteCart(int cartId);
 public void updateCart(int cartId,int qunatity) throws Exception;
 
+public void clearCart (int custid);
 
-    //get list of products from cart table based on customerid
-    //save list of products into cart table based on customerid
-    //delete list of products into cart table based on customerid
-    // update product quantity based on product id and customer id
+
+
 }

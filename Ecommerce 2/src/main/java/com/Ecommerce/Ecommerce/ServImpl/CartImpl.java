@@ -27,13 +27,21 @@ public class CartImpl implements CustomerCartService {
 
     @Override
     public List<CartBean> saveCart(CartBean cartBean) {
-        ProductDetailsBean productDetails = cartBean.getCartPdetailsId();
-        productDetailsRepo.save(productDetails);
+        List<Integer> productDetailsIds = productDetailsRepo.findNonNullProductDetailsIds();
+
+        if (!productDetailsIds.contains(cartBean.getCartPdetailsId())) {
+            throw new RuntimeException("Product not found with id: " + cartBean.getCartPdetailsId());
+        }
+
+        cartBean.setCartPdetailsId(cartBean.getCartPdetailsId());
         cartRepo.save(cartBean);
         List<CartBean> cartBeanList = new ArrayList<>();
         cartBeanList.add(cartBean);
-        return getCart(cartBean.getCartCustId().getCid());
+        return getCart(cartBean.getCartCustId());
     }
+
+
+
 
     @Override
     public void deleteCart(int cartId) {
@@ -50,6 +58,11 @@ public class CartImpl implements CustomerCartService {
         }else{
             throw new Exception("Sorry Product is Out of Stock");
         }
+    }
+
+    @Override
+    public void clearCart(int cartcustid) {
+        cartRepo.allclearCart(cartcustid);
     }
 
 

@@ -1,15 +1,12 @@
 package com.Ecommerce.Ecommerce.ServImpl;
-
+import com.Ecommerce.Ecommerce.Bean.CustInformationBean;
 import com.Ecommerce.Ecommerce.Bean.ProductCategoryBean;
 import com.Ecommerce.Ecommerce.Bean.ProductDetailsBean;
-import com.Ecommerce.Ecommerce.Bean.CustInformationBean;
-import com.Ecommerce.Ecommerce.Repo.HomePageLoginRepo;
-import com.Ecommerce.Ecommerce.Repo.HomePageProductSearchRepo;
-import com.Ecommerce.Ecommerce.Repo.HomePageRepo;
-import com.Ecommerce.Ecommerce.Repo.HomePageSignUpRepo;
+import com.Ecommerce.Ecommerce.Repo.*;
 import com.Ecommerce.Ecommerce.Service.HomePageService;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +26,8 @@ public class HomePageServImpl implements HomePageService {
     private HomePageSignUpRepo homePageSignUpRepo;
    @Autowired
  private HomePageProductSearchRepo homePageProductSearchRepo;
+   @Autowired
+   private ProductDetailsRepo productDetailsRepo;
 
     //HomePageDBOperations hp=new HomePageDBOperations();
     @Override
@@ -79,5 +78,20 @@ public class HomePageServImpl implements HomePageService {
         return productList;
     }
 
+    @Override
+    public List<ProductDetailsBean> getAllProductDetails() throws BadRequestException {
+        return productDetailsRepo.getAllProductDetails();
+   }
 
+    @Override
+    public int getCustId(String email) {
+        return homePageLoginRepo.findCustomerIdByEmail(email);
+    }
 }
+
+
+
+
+
+
+

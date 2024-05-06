@@ -1,9 +1,10 @@
 package com.Ecommerce.Ecommerce.Service;
 
 
+import com.Ecommerce.Ecommerce.Bean.CustInformationBean;
 import com.Ecommerce.Ecommerce.Bean.ProductCategoryBean;
 import com.Ecommerce.Ecommerce.Bean.ProductDetailsBean;
-import com.Ecommerce.Ecommerce.Bean.CustInformationBean;
+import org.apache.coyote.BadRequestException;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +16,8 @@ import java.util.List;
 
         String signUpCustomer(CustInformationBean customer) throws Exception;
         List<ProductDetailsBean> searchProducts(String keywords)throws SQLException, ClassNotFoundException;
-
+        List<ProductDetailsBean> getAllProductDetails() throws BadRequestException;
+        int getCustId(String email);
 
     }
 

@@ -31,4 +31,10 @@ public class CartController {
     public void updateCart(@RequestParam int cartId, int quantity) throws Exception {
         customerCartService.updateCart(cartId,quantity);
     }
+
+    @DeleteMapping("/clearcart")
+    public void  clearCart(@RequestParam int cartcustid){
+        customerCartService.clearCart(cartcustid);
+    }
+
 }

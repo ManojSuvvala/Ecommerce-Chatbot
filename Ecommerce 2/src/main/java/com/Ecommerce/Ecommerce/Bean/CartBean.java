@@ -18,13 +18,12 @@ public class CartBean {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CART_ID")
     int cartId;
-    @OneToOne
     //@Column(name = "CART_PRODUCTDETAILS_ID")
-    @JoinColumn(name = "CART_PRODUCTDETAILS_ID")
-     ProductDetailsBean cartPdetailsId;
-    @OneToOne
-    @JoinColumn(name = "CART_CUSTOMER_ID")
-     CustInformationBean cartCustId;
+    @Column(name = "CART_PRODUCTDETAILS_ID")
+    int cartPdetailsId;
+
+    @Column(name = "CART_CUSTOMER_ID")
+    int cartCustId;
     @Column(name = "QUANTITY")
     int quantity;
 

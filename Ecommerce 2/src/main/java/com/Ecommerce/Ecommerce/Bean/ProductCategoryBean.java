@@ -1,19 +1,19 @@
 package com.Ecommerce.Ecommerce.Bean;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Table(name = "PRODUCT_CATEGORY")
 @Entity
 @Data
 public class ProductCategoryBean {
-@Column(name ="PRODUCT_ID")
-        @Id
-    int Product_id;
-    @Column(name ="CATEGORY")
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="PRODUCT_ID")
+    int Product_id;
+
+    @Column(name ="CATEGORY")
     String Category;
 
     public int getProduct_id() {

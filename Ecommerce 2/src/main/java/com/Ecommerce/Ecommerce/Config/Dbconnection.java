@@ -16,6 +16,6 @@ public class Dbconnection {
    @ConfigurationProperties(prefix = "spring.datasource.hikari")
     public DataSource dbConnection(){
 //       DynamicPropertyFactory factory = DynamicPropertyFactory.getInstance();
-       return DataSourceBuilder.create().driverClassName("com.mysql.cj.jdbc.Driver").url("jdbc:mysql://ecommerce.czy4qak88nc8.us-east-2.rds.amazonaws.com:3306/ECOMMERCE").username("admin").password("Confidence").build();
+       return DataSourceBuilder.create().driverClassName("com.mysql.cj.jdbc.Driver").url("jdbc:mysql://127.0.0.1:3306/Ecommerce").username("root").password("Manoj143").build();
     }
 }

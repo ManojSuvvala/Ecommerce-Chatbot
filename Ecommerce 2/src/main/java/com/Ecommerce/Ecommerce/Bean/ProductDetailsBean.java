@@ -27,8 +27,9 @@ public class ProductDetailsBean {
     @Column(name = "DESCRIPTION")
 
     String description;
-    @Column(name = "PRODUCT_IMAGE")
-    String productImage;
+    @Lob // Use @Lob annotation for binary data
+    @Column(name = "PRODUCT_IMAGE", columnDefinition="BLOB")
+    byte[] productImage;
     @Column(name = "PRODUCTCATEGORY_ID")
 int productCategoryId;
     @Column(name = "PRODUCT_SUBCATEGORY_ID")
